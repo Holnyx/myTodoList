@@ -1,0 +1,76 @@
+.todolist {
+  /* max-width: 500px; */
+  /* max-width: fit-content;
+  max-height: fit-content; */
+  /* height: 100%; */
+  /* display: flex; */
+  /* flex-direction: column;
+  justify-content: space-between;
+  align-items: center; */
+  padding: 10px 10px 10px 10px;
+  /* background-color: rgb(255, 217, 0); */
+  /* border-radius: 10px; */
+  position: relative;
+}
+h3{
+  margin: 30px;
+}
+/* .show{
+  right:9px;
+} */
+.input-styled {
+  position: absolute;
+  top: 76px;
+}
+.hide-todolist{
+  justify-content: start;
+}
+.font-size-info{
+  font-size: 12px;
+}
+.input-styled>input {
+  margin-right: 8px;
+  width: auto;
+}
+
+ul {
+  width: 90%;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 30px 0 20px 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nothing-message {
+  padding: 6px;
+  color: rgb(255, 72, 0);
+  padding-top: 20px;
+}
+
+.task-done {
+  text-decoration: line-through;
+  opacity: .5;
+}
+
+.task-input-error {
+  border: 2px solid red;
+  outline: none;
+}
+
+.red {
+  color: red;
+}
+
+.message{
+  margin: 10px 0;
+
+}
+.transition{
+  transition: all 1s ease;
+}
