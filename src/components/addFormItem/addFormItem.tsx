@@ -31,27 +31,31 @@ export const AddFormItem: FC<AddFormItemType> = ({ addItem }) => {
 
     return (
 
-        <Box gap={'10px'} display={'flex'}>
-            <TextField
-                error={!!error}
-                size="small"
-                id="outlined-basic"
-                label={error ? "Error" : "Type something"}
-                variant="outlined"
-                value={taskTitle}
-                onChange={setTaskTitleHandler}
-                onKeyDown={(event) => event.key === "Enter" && addNewTaskHandler()} />
-            {/* <Input classes={error ? 'task-input-error ' : ""}
+        <Box gap={'10px'} display={'flex'} flexDirection={'column'}>
+            <Box gap={'10px'} display={'flex'}>
+                <TextField
+                    error={!!error}
+                    size="small"
+                    id="outlined-basic"
+                    label={error ? "Enter task name" : "Type something"}
+                    variant="outlined"
+                    value={taskTitle}
+                    onChange={setTaskTitleHandler}
+                    onKeyDown={(event) => event.key === "Enter" && addNewTaskHandler()} />
+                {/* <Input classes={error ? 'task-input-error ' : ""}
                 value={taskTitle}
                 onChangeHandler={setTaskTitleHandler}
                 onKeyDownHandler={(event) => event.key === "Enter" && addNewTaskHandler()} /> */}
-
-            <Button variant="contained"
-                style={styles}
-                onClick={addNewTaskHandler}
-                disabled={!taskTitle}>+</Button>
-            {error && <div className='red message'>Введите название таски</div>}
-            {taskTitle.length > 15 && <div className='red'>Рекомендуемое количество символов не более 15</div>}
+                <Button variant="contained"
+                    style={styles}
+                    onClick={addNewTaskHandler}
+                    disabled={!taskTitle}>+</Button>
+            </Box>
+            <div>
+                {/* {error && <div style={{fontSize:'12px', color:'red'}}>Enter task name</div>} */}
+                {taskTitle.length > 15 && <div style={{fontSize:'12px', color:'red'}}>
+                    Number of characters is no more than 15</div>}
+            </div>
         </Box>
     );
 };

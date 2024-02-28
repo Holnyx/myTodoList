@@ -1,12 +1,9 @@
 import React, { FC, useState } from 'react';
 // import Button from '../button/Button';
 // import './TodoListStyled.css'
-import { Input } from '../input/Input';
 import { AddFormItem } from '../addFormItem/addFormItem';
 import { EditableSpan } from '../EditableSpan';
 import Button from '@mui/material/Button';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -68,10 +65,10 @@ const TodoList: FC<TodoListPropsType> = ({ title, tasks, removeTask, changeTaskS
     }
 
     const tasksItems: JSX.Element = taskForTodoList.length !== 0
-        ? <List sx={{width:'100%',display:'flex',flexDirection:'column' , justifyContent:'space-between'}}>
+        ? <List sx={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             {taskForTodoList.map(task => {
                 return (
-                    <ListItem 
+                    <ListItem
                         secondaryAction={
                             <IconButton aria-label="delete" onClick={() => { removeTask(todolistID, task.id) }}>
                                 <DeleteIcon />
@@ -79,7 +76,7 @@ const TodoList: FC<TodoListPropsType> = ({ title, tasks, removeTask, changeTaskS
                         }
                     >
                         <Checkbox checked={task.isDone} onChange={(e) => changeTaskStatus(todolistID, task.id, e.currentTarget.checked)} />
-                        <ListItemText sx={{ textAlign: 'center', margin:0 }}
+                        <ListItemText sx={{ textAlign: 'center', margin: 0 }}
                             primary={<EditableSpan title={(newTitle) => updateTaskTitleHandler(task.id, newTitle)} oldTitle={task.title} />} />
                         {/* <FormControlLabel
                             control={<Checkbox checked={task.isDone} onChange={(e) => changeTaskStatus(todolistID, task.id, e.currentTarget.checked)} />}
@@ -92,25 +89,26 @@ const TodoList: FC<TodoListPropsType> = ({ title, tasks, removeTask, changeTaskS
                 )
             })}
         </List>
-        : <Box width={'100%'} justifyContent={'center'} display={'flex'} sx={{ padding: '20px 0' }}>Nothing</Box>
+        : <Box width={'100%'} justifyContent={'center'} display={'flex'} sx={{ padding: '10px 0 20px 0' }}>
+        Empty</Box>
     return (
-        <Box width={'100%'} display={'flex'} alignItems={'center'} flexDirection={'column'} style={{ position: 'relative', padding: '30px 0 0 0'}}>
-            <h3>
+        <Box width={'100%'} display={'flex'} alignItems={'center'} flexDirection={'column'} style={{ position: 'relative', padding: '30px 0 0 0' }}>
+            <h2>
                 <EditableSpan title={updateTodoTitleHandler} classes={''} oldTitle={title} />
                 <Button variant="outlined" sx={{ position: 'absolute', top: '0px', left: '0' }}
                     // classes={isHide ? 'margin' : 'margin'} title={isHide ? 'Show' : 'Hide'} 
                     onClick={toggleHideTodoList} > {isHide ? 'Show' : 'Hide'} </Button>
-            </h3>
+            </h2>
             <Button variant="outlined" sx={{ position: 'absolute', top: '0px', right: '0' }}
-                    // classes={isHide ? 'margin' : 'margin'} title={isHide ? 'Show' : 'Hide'} 
-                    onClick={() => removeTodoList(todolistID)} > Delete </Button>
+                // classes={isHide ? 'margin' : 'margin'} title={isHide ? 'Show' : 'Hide'} 
+                onClick={() => removeTodoList(todolistID)} > Delete </Button>
             <div>
-                {isHide && <div >В туду листе всего {tasks.length} задач
-                    <div>Из них {activeTasksForHideMode} задач выполненно</div></div>}
+                {isHide && <div style={{textAlign:'center'}}>There are only {tasks.length} tasks on that sheet
+                    <div>Of these,  {activeTasksForHideMode}  tasks completed</div></div>}
             </div>
             {!isHide &&
                 <>
-                    <AddFormItem  addItem={addNewTask} />
+                    <AddFormItem addItem={addNewTask} />
                     {tasksItems}
                     <Box display={'flex'} gap={"10px"}>
                         <Button variant={filter === 'all' ? "outlined" : 'contained'} color='error'

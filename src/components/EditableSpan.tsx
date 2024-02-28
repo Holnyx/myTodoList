@@ -38,6 +38,6 @@ export const EditableSpan: FC<EditableSpanType> = ({ title, classes, oldTitle })
             // onKeyDownHandler={(e)=> e.key === "Enter" ? editHandler : inputRef.current?.blur()}
             // />
             // <input value={newTitle} onBlur={editHandler} autoFocus onChange={onChangeHandler} />
-            : <Box fontSize={'18px'} className={classes} onDoubleClick={editHandler} >{oldTitle}</Box>
+            : <Box onDoubleClick={editHandler} >{oldTitle}</Box>
     );
 };
